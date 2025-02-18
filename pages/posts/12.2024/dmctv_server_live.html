@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="index, follow">
+		<meta name="viewport" content="width=850">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+		<link rel="stylesheet" href="/css/styles.min.css"/>
+		<title>DMC TV - Server Live!</title>
+		<meta name="description" content="After a long journey of trial and error with many hiccups and failures, the official DMC TV server is now live!">
+		<meta name="keywords" content="deathmatch, classic, goldsrc, valve">
+	</head>
+	<body>
+		<audio id="auto-play" preload="auto"></audio>
+		<div>
+		<div id="container">
+			<script id="replace_with_header" src="/scripts/header.js"></script>
+			<div id="content">
+				<script id="replace_with_nav" src="/scripts/nav.js"></script>
+				<div id="main">
+					<div class="heading">
+						<span class="title">
+							<h3>DMC TV Server Live!</h3>
+							<p> - </p>
+							<em>maxresdefault 12/10/2024</em>
+						</span>
+						<hr>
+					</div>
+					<div class="main-content">
+						<p>After a long journey of trial and error with many hiccups and failures, the official DMC TV server is now live! Our server is hosted in San Jose 24/7 and mostly anyone in North America should have playable ping. You can connect to the server by clicking the link on the left side of our website (if DMC is installed), or by entering <a href="steam://connect/146.235.235.64:27015/">play.dmctv.net</a> into your server browser.</p>
+						<p>The goal of this server is to provide a vanilla experience supplemented with bots (it is DMC after all). The thing that differentiates our server from others is our bot plugin. We are running the most advanced bot plugin available for GoldSrc. Other popular DMC servers use a plugin called <a href="https://github.com/Bots-United/HPB-bot" target="_blank">HPB-Bot</a> which relies on pre generated navigation files for maps. Of course almost any custom map won't have these navigation files generated and the bots thus won't play those maps well. Even on maps with these navigation files HPB-Bot is quite limited, the bots do not jump, or play very well.</p>
+						<p>Our server is running a custom build of <a href="https://github.com/nekonomicon/Parabot" target="_blank">Parabot</a> compiled by me. I have contributed some code changes and bug fixes to this project, but overall Parabot is amazing. This plugin generates navigation files from the way players move and play; the bots learn! These bots are far more aggressive and smart, and sometimes they really do feel like real humans. Unfortunately, Parabot is a deprecated project and was riddled with bugs. This is where our custom build comes in, it took months to fix all the bugs I had found. But now I can confidently say our version of the plugin is stable, and ready to go public on the server!</p>
+						<p>Other notable additions include a custom compiled version of AMX Mod X's map voting plugin. This version modified by me will display properly on the Half-Life 25th Anniversary update.</p>
+						<p>TLDR: When Valve published this update, they modified the code surrounding UI scaling, so many old plugins in DMC (and other GoldSrc games) no longer display correctly and are sometimes even unreadable. This will not be an issue on our server (even if you are playing on the legacy branch of the game the map vote UI will still be readable). The other change is that when no votes are cast, a random map will be selected, instead of falling back to the next map in the map cycle.</p>
+						<p>The current map cycle for the server is:</p>
+						<ul>
+						    <li>dcdm5</li>
+						    <li>dmc_dm2</li>
+						    <li>dmc_dm3</li>
+						    <li>dmc_dm4</li>
+						    <li>dmc_dm6</li>
+						    <li>dmc_e1m2</li>
+						    <li>p_se_3</li>
+						    <li>dmc_crdm2</li>
+						    <li><a href="https://gamebanana.com/mods/143185" target="_blank">dmc_crossfire</a></li>
+						    <li><a href="https://gamebanana.com/mods/143186" target="_blank">dmc_dagon</a></li>
+						    <li><a href="https://gamebanana.com/mods/143191" target="_blank">dmc_graydust</a></li>
+						    <li><a href="https://gamebanana.com/mods/467027" target="_blank">dmc_graytech</a></li>
+						    <li><a href="https://gamebanana.com/mods/143197" target="_blank">dmc_revenant</a></li>
+						</ul>
+						<p>Lastly, I have other plugins in the works! I am currently working on a plugin that will upload your in game statistics to this website! This might still be a ways away, but it is being worked on. Always check back on our website for any updates. Enjoy the server!</p>
+						<p>~maxresdefault</p>
+					</div>
+				</div>
+			</div>
+			<script id="replace_with_footer" src="/scripts/footer.js"></script>
+		</div>
+		<script src="/scripts/audio.js"></script>
+		<script src="/scripts/players.js"></script>
+	</body>
+</html>
