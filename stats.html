@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="index, follow">
+		<meta name="viewport" content="width=850">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+		<link rel="stylesheet" href="/css/styles.min.css"/>
+		<title>DMC TV Stats</title>
+		<meta name="description" content="Track your stats on the DMC TV server!">
+		<meta name="keywords" content="deathmatch, classic, goldsrc, valve">
+	</head>
+	<body>
+		<audio id="auto-play" preload="auto"></audio>
+		<div id="container">
+			<script id="replace_with_header" src="/scripts/header.js"></script>
+			<div id="content">
+				<script id="replace_with_nav" src="/scripts/nav.js"></script>
+				<div id="main">
+					<div class="heading" style="margin-bottom:0">
+						<h3>Player Statistics</h3>
+						<hr>
+					</div>
+					<div class="stats-menu">
+						<input type="text" name="player-search" id="player-search" placeholder="SteamID or Username" style="width:290px" required>
+						<input name="submit" type="submit" id="search" style="width:55px" value="Search">
+						<label id="stuff-me" style="user-select:none; width:129px; display:inline-block; text-align:center; white-space: nowrap;">
+							Show SteamID<input style="margin-right: 0;" type="checkbox" name="show-steamid">
+						</label>
+						<select style="width:102px" name="filter">
+							<option value="Total KDR">Total KDR</option>
+							<option value="Username">Username</option>
+							<option value="Total Kills">Total Kills</option>
+							<option value="Time Played">Time Played</option>
+						</select>
+					</div>
+					<div class="main-content" style="margin-bottom: 0;margin-top:0">
+						<table style="width:594px">
+							<tr>
+								<th id="player-id">Username</th>
+								<th>Time Played</th>
+								<th style="width: min-content;">Total KDR</th>
+								<th style="width: min-content;">Bot KDR</th>
+								<th style="width: min-content;">Player KDR</th>
+								<th>Kills</th>
+								<th>Deaths</th>
+								<th>Fav Weapon</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<script id="replace_with_footer" src="/scripts/footer.js"></script>
+		</div>
+		<script src="/scripts/audio.js"></script>
+		<script src="/scripts/players.js"></script>
+		<script src="/scripts/stuffer.js"></script>
+		<script src="/scripts/stat_handler.js"></script>
+	</body>
+</html>

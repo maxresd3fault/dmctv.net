@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="index, follow">
+		<meta name="viewport" content="width=850">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+		<link rel="stylesheet" href="/css/styles.min.css"/>
+		<title>DMC TV - Stats Live!</title>
+		<meta name="description" content="With four programming languages, over 500 lines of code, and two servers, we now have live updating stats on our website!">
+		<meta name="keywords" content="deathmatch, classic, goldsrc, valve">
+	</head>
+	<body>
+		<audio id="auto-play" preload="auto"></audio>
+		<div id="container">
+			<script id="replace_with_header" src="/scripts/header.js"></script>
+			<div id="content">
+				<script id="replace_with_nav" src="/scripts/nav.js"></script>
+				<div id="main">
+					<div class="heading">
+						<span class="title">
+							<h3>DMC TV Stats Live!</h3>
+							<p> - </p>
+							<em>maxresdefault 6/12/2025</em>
+						</span>
+						<hr>
+					</div>
+					<div class="main-content">
+						<p>With four programming languages, over 500 lines of code, and two servers, we now have live updating stats on our website! About six months ago when our server first went live I hinted at making a live updating player statistics page on our website. Well, it's finally here!</p>
+						<p>I developed a new AMX Mod X plugin from scratch which pushes player data to a database on our web server, which this website now interacts with and displays on the new <a href="/stats.html">Player Stats</a> page. The plugin collects all kinds of information, such as playtime, seperate KDR info for your kills and deaths against bots and humans, your favorite weapon, etc. You can filter these results, search for specific players, and more!</p>
+						<p>We hope to see the list of players immortalized on our stats page grow as time goes on. To my knowledge, we are the only Deathmatch Classic server with such a statistics tracker now.</p>
+						<p>All of our source code is also publicly available on GitHub if you are interested to see how it works:</p>
+						<ul>
+							<li><a target="_blank" href="https://github.com/maxresd3fault/dmctv.net">DMC TV Website Source</a></li>
+							<li><a target="_blank" href="https://github.com/maxresd3fault/dmctv-stats">DMC TV Stats Plugin Source</a></li>
+						</ul>
+						<p>~maxresdefault</p>
+					</div>
+				</div>
+			</div>
+			<script id="replace_with_footer" src="/scripts/footer.js"></script>
+		</div>
+		<script src="/scripts/audio.js"></script>
+		<script src="/scripts/players.js"></script>
+	</body>
+</html>
