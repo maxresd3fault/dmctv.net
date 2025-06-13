@@ -53,10 +53,33 @@
 			$total_deaths = $row['deaths'] + $row['bot_deaths'];
 			$total_kills = $row['kills'] + $row['bot_kills'];
 			
-			$player_kdr = $row['deaths'] == 0 ? ($row['kills'] > 0 ? '∞' : '0.00') : number_format($row['kills'] / $row['deaths'], 2, '.', '');
-			$bot_kdr = $row['bot_deaths'] == 0 ? ($row['bot_kills'] > 0 ? '∞' : '0.00') : number_format($row['bot_kills'] / $row['bot_deaths'], 2, '.', '');
-			if ($total_deaths == 0) {
-				$total_kdr = $total_kills > 0 ? '∞' : '0.00';
+			// KDR calculations
+			if ($row['kills'] == 0 && $row['deaths'] == 0) {
+				$player_kdr = '-.--'; // No KDR data
+			} elseif ($row['kills'] == 0 && $row['deaths'] > 0) {
+				$player_kdr = '0.00'; // 0 kills and > 0 deaths
+			} elseif ($row['deaths'] == 0) {
+				$player_kdr = 'Inf'; // 0 deaths and >0 kills
+			} else {
+				$player_kdr = number_format($row['kills'] / $row['deaths'], 2, '.', '');
+			}
+			
+			if ($row['bot_kills'] == 0 && $row['bot_deaths'] == 0) {
+				$bot_kdr = '-.--';
+			} elseif ($row['bot_kills'] == 0 && $row['bot_deaths'] > 0) {
+				$bot_kdr = '0.00';
+			} elseif ($row['bot_deaths'] == 0) {
+				$bot_kdr = '∞';
+			} else {
+				$bot_kdr = number_format($row['bot_kills'] / $row['bot_deaths'], 2, '.', '');
+			}
+
+			if ($total_kills == 0 && $total_deaths == 0) {
+				$total_kdr = '-.--';
+			} elseif ($total_kills == 0 && $total_deaths > 0) {
+				$total_kdr = '0.00';
+			} elseif ($total_deaths == 0) {
+				$total_kdr = '∞';
 			} else {
 				$total_kdr = number_format($total_kills / $total_deaths, 2, '.', '');
 			}
