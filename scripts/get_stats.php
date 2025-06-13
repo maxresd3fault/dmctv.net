@@ -50,14 +50,15 @@
 	
 	if ($result && $result->num_rows > 0) {
 		while ($row = $result->fetch_assoc()) {
-			$player_kdr = $row['deaths'] == 0 ? ($row['kills'] > 0 ? '∞' : '0.00') : round($row['kills'] / $row['deaths'], 2);
-			$bot_kdr = $row['bot_deaths'] == 0 ? ($row['bot_kills'] > 0 ? '∞' : '0.00') : round($row['bot_kills'] / $row['bot_deaths'], 2);
 			$total_deaths = $row['deaths'] + $row['bot_deaths'];
 			$total_kills = $row['kills'] + $row['bot_kills'];
+			
+			$player_kdr = $row['deaths'] == 0 ? ($row['kills'] > 0 ? '∞' : '0.00') : number_format($row['kills'] / $row['deaths'], 2, '.', '');
+			$bot_kdr = $row['bot_deaths'] == 0 ? ($row['bot_kills'] > 0 ? '∞' : '0.00') : number_format($row['bot_kills'] / $row['bot_deaths'], 2, '.', '');
 			if ($total_deaths == 0) {
 				$total_kdr = $total_kills > 0 ? '∞' : '0.00';
 			} else {
-				$total_kdr = round($total_kills / $total_deaths, 2);
+				$total_kdr = number_format($total_kills / $total_deaths, 2, '.', '');
 			}
 			
 			$weapons = [
@@ -113,3 +114,4 @@
 		'total_pages' => $totalPages,
 		'current_page' => $page
 	]);
+	
