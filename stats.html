@@ -22,29 +22,42 @@
 						<hr>
 					</div>
 					<div class="stats-menu">
-						<input type="text" name="player-search" id="player-search" placeholder="SteamID or Username" style="width:290px" required>
-						<input name="submit" type="submit" id="search" style="width:55px" value="Search">
-						<label id="stuff-me" style="user-select:none; width:129px; display:inline-block; text-align:center; white-space: nowrap;">
-							Show SteamID<input style="margin-right: 0;" type="checkbox" name="show-steamid">
+						<input type="text" name="player-search" id="player-search" placeholder="SteamID or Username" style="width:519px" required>
+						<input class="action" name="submit" type="submit" id="search" style="width:65px" value="Search">
+					</div>
+					<div class="stats-menu">
+						<label class="action" id="stuff-me" style="user-select:none; width:130px; display:inline-block; text-align:center; white-space: nowrap;">
+							Show SteamID<input style="margin-right:0;cursor:pointer;accent-color:#F50" type="checkbox" name="show-steamid">
 						</label>
-						<select style="width:102px" name="filter">
+						<input class="action" name="refresh" type="button" id="refresh" style="width:105px" value="Refresh Data">
+						<select style="width:110px" name="filter">
 							<option value="Total KDR">Total KDR</option>
 							<option value="Username">Username</option>
 							<option value="Total Kills">Total Kills</option>
 							<option value="Time Played">Time Played</option>
 						</select>
+						<select style="width:237px" name="weapon-select">
+							<option value="axe_kills">Crowbar Kills</option>
+							<option value="shotgun_kills">Shotgun Kills</option>
+							<option value="doubleshotgun_kills">Super Shotgun Kills</option>
+							<option value="nailgun_kills">Nailgun Kills</option>
+							<option value="supernail_kills">Super Nailgun Kills</option>
+							<option value="grenadelauncher_kills">Grenade Launcher Kills</option>
+							<option value="rocketlauncher_kills" selected>Rocket Launcher Kills</option>
+							<option value="lightninggun_kills">Lightning Gun Kills</option>
+						</select>
 					</div>
 					<div class="main-content" style="margin-bottom: 0;margin-top:0">
 						<table style="width:594px">
 							<tr>
-								<th id="player-id">Username</th>
+								<th id="player-id" style="width:100%">Username</th>
 								<th>Time Played</th>
-								<th style="width: min-content;">Total KDR</th>
-								<th style="width: min-content;">Bot KDR</th>
-								<th style="width: min-content;">Player KDR</th>
+								<th>Total KDR</th>
+								<th>Bot KDR</th>
+								<th>Player KDR</th>
 								<th>Kills</th>
 								<th>Deaths</th>
-								<th>Fav Weapon</th>
+								<th id="selected-weapon">RL Kills</th>
 							</tr>
 						</table>
 					</div>

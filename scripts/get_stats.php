@@ -14,6 +14,7 @@
 	}
 	
 	$filter = $_GET['filter'] ?? 'Total KDR';
+	$whichWeapon = $_GET['whichWeapon'] ?? 'rocketlauncher_kills';
 	$search = $_GET['search'] ?? '';
 	$columns = [
 		'Total KDR' => '(kills + bot_kills) / NULLIF(deaths + bot_deaths, 0) DESC',
@@ -37,8 +38,7 @@
 	
 	$sql = "
 	SELECT steamid, last_username, time_played, kills, bot_kills, deaths, bot_deaths,
-	axe_kills, shotgun_kills, doubleshotgun_kills, nailgun_kills,
-	supernail_kills, grenadelauncher_kills, rocketlauncher_kills, lightninggun_kills
+	$whichWeapon
 	FROM player_stats
 	$whereClause
 	ORDER BY $orderBy
@@ -52,6 +52,7 @@
 		while ($row = $result->fetch_assoc()) {
 			$total_deaths = $row['deaths'] + $row['bot_deaths'];
 			$total_kills = $row['kills'] + $row['bot_kills'];
+			$weaponKills = $row[$whichWeapon];
 			
 			// KDR calculations
 			if ($row['kills'] == 0 && $row['deaths'] == 0) {
@@ -59,7 +60,7 @@
 			} elseif ($row['kills'] == 0 && $row['deaths'] > 0) {
 				$player_kdr = '0.00'; // 0 kills and > 0 deaths
 			} elseif ($row['deaths'] == 0) {
-				$player_kdr = 'Inf'; // 0 deaths and >0 kills
+				$player_kdr = '∞'; // 0 deaths and >0 kills
 			} else {
 				$player_kdr = number_format($row['kills'] / $row['deaths'], 2, '.', '');
 			}
@@ -84,33 +85,6 @@
 				$total_kdr = number_format($total_kills / $total_deaths, 2, '.', '');
 			}
 			
-			$weapons = [
-				'axe_kills', 'shotgun_kills', 'doubleshotgun_kills',
-				'nailgun_kills', 'supernailgun_kills',
-				'grenadelauncher_kills', 'rocketlauncher_kills', 'lightninggun_kills'
-			];
-			
-			$weaponNames = [
-				'axe_kills' => 'Crowbar',
-				'shotgun_kills' => 'Shotgun',
-				'doubleshotgun_kills' => 'Super Shotgun',
-				'nailgun_kills' => 'Nailgun',
-				'supernailgun_kills' => 'Super Nailgun',
-				'grenadelauncher_kills' => 'Grenade Launcher',
-				'rocketlauncher_kills' => 'Rocket Launcher',
-				'lightninggun_kills' => 'Lightning Gun'
-			];
-			
-			$maxKills = 0;
-			$favorite_weapon = 'None';
-			
-			foreach ($weapons as $weapon) {
-				if ((int)$row[$weapon] > $maxKills) {
-					$maxKills = (int)$row[$weapon];
-					$favorite_weapon = $weaponNames[$weapon];
-				}
-			}
-			
 			$minutes = (int) round($row['time_played'] / 60);
 			$hours = intdiv($minutes, 60);
 			$remaining_minutes = $minutes % 60;
@@ -125,7 +99,7 @@
 				'bot_kdr' => $bot_kdr,
 				'kills' => $total_kills,
 				'deaths' => $total_deaths,
-				'favorite_weapon' => $favorite_weapon
+				'weapon_kills' => $weaponKills
 			];
 		}
 	}

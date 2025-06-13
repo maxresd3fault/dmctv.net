@@ -4,6 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
 	const searchBtn = document.getElementById("search");
 	const filterSelect = document.querySelector("select[name='filter']");
 	const showSteamIDToggle = document.querySelector("input[name='show-steamid']");
+	const refreshBtn = document.getElementById("refresh");
+	const weaponSelect = document.querySelector("select[name='weapon-select']");
+	
+	const weaponAbbreviations = {
+		axe_kills: "CB Kills",
+		shotgun_kills: "SG Kills",
+		doubleshotgun_kills: "SS Kills",
+		nailgun_kills: "NG Kills",
+		supernail_kills: "SN Kills",
+		grenadelauncher_kills: "GL Kills",
+		rocketlauncher_kills: "RL Kills",
+		lightninggun_kills: "LG Kills"
+	};
 	
 	let showSteamID = false;
 	let currentPage = 1;
@@ -61,7 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	function fetchStats(page = 1) {
 		const search = searchInput.value.trim();
 		const filter = filterSelect.value;
-		const url = `/scripts/get_stats.php?search=${encodeURIComponent(search)}&filter=${encodeURIComponent(filter)}&page=${page}`;
+		const weapon = weaponSelect.value;
+		const url = `/scripts/get_stats.php?search=${encodeURIComponent(search)}&filter=${encodeURIComponent(filter)}&whichWeapon=${encodeURIComponent(weapon)}&page=${page}`;
 		
 		fetch(url)
 			.then(response => response.json())
@@ -92,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						<td>${player.player_kdr}</td>
 						<td>${player.kills}</td>
 						<td>${player.deaths}</td>
-						<td>${player.favorite_weapon}</td>
+						<td>${player.weapon_kills}</td>
 					`;
 					table.appendChild(tr);
 				});
@@ -110,7 +124,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		currentPage = 1;
 		fetchStats(currentPage);
 	});
+	refreshBtn.addEventListener("click", () => {
+		currentPage = 1;
+		fetchStats(currentPage);
+	});
 	filterSelect.addEventListener("change", () => {
+		currentPage = 1;
+		fetchStats(currentPage);
+	});
+	weaponSelect.addEventListener("change", () => {
+		const weaponHeader = table.querySelector("th#selected-weapon");
+		const selectedWeapon = weaponSelect.value;
+		weaponHeader.textContent = weaponAbbreviations[selectedWeapon];
+		
 		currentPage = 1;
 		fetchStats(currentPage);
 	});
