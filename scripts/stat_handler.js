@@ -127,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	refreshBtn.addEventListener("click", () => {
 		currentPage = 1;
 		fetchStats(currentPage);
+		const target = document.getElementById('blink-me');
+		target.classList.remove('blink');
+		void target.offsetWidth;
+		target.classList.add('blink');
 	});
 	filterSelect.addEventListener("change", () => {
 		currentPage = 1;
