@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					const td = document.createElement("td");
 					td.colSpan = 8;
 					td.style.textAlign = "center";
-					td.textContent = "Error contacting database.";
+					td.textContent = "No data.";
 					tr.appendChild(td);
 					table.appendChild(tr);
 					totalPages = 1;

@@ -28,7 +28,8 @@
 	$whereClause = '';
 	if ($search !== '') {
 		$search = $conn->real_escape_string($search);
-		$whereClause = "WHERE steamid LIKE '%$search%' OR last_username LIKE '%$search%'";
+		$search = preg_replace('/^STEAM_/', '', $search);
+		$whereClause = "WHERE SUBSTRING(steamid, 7) LIKE '%$search%' OR last_username LIKE '%$search%'";
 	}
 	
 	$countSql = "SELECT COUNT(*) AS total FROM player_stats $whereClause";
